@@ -1,4 +1,4 @@
-namespace PetStoreApiSpecFlowTests.Models
+namespace PetStoreApiSpecFlowTests.Model
 {
     public class Order
     {

@@ -1,0 +1,36 @@
+# .NET build and system files
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+
+# VS Code settings
+.vscode/
+
+# Test results
+TestResults/
+
+# Mac system files
+.DS_Store
+
+# Logs
+*.log
+
+# NuGet packages
+*.nupkg
+
+# Generated SpecFlow files
+*.feature.cs
+
+# Other system files
+Thumbs.db
+
+# Environment files
+.env
+
+# Ignore appsettings secrets (if any)
+appsettings.*.json
+!appsettings.json
