@@ -14,24 +14,24 @@ namespace PetStoreApiSpecFlowTests.Helpers
             _client = new StoreApiClient();
         }
 
-        public async Task<HttpResponseMessage> PlaceOrderAsync(Order order)
+        public async Task<HttpResponseMessage> placeOrderAsync(Order order)
         {
-            return await _client.PostOrderAsync(order);
+            return await _client.postOrderAsync(order);
         }
 
-        public async Task<HttpResponseMessage> GetOrderByIdAsync(long id)
+        public async Task<HttpResponseMessage> getOrderByIdAsync(long id)
         {
-            return await _client.GetOrderByIdAsync(id);
+            return await _client.getOrderByIdAsync(id);
         }
 
-        public async Task<HttpResponseMessage> DeleteOrderByIdAsync(long id)
+        public async Task<HttpResponseMessage> deleteOrderByIdAsync(long id)
         {
-            return await _client.DeleteOrderByIdAsync(id);
+            return await _client.deleteOrderByIdAsync(id);
         }
 
-        public async Task<HttpResponseMessage> GetInventoryAsync()
+        public async Task<HttpResponseMessage> getInventoryAsync()
         {
-            return await _client.GetInventoryAsync();
+            return await _client.getInventoryAsync();
         }
     }
     

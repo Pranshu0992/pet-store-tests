@@ -25,7 +25,7 @@ namespace PetStoreApiSpecFlowTests.Client
             _httpClient.BaseAddress = new System.Uri(baseUrl);
         }
 
-        private void AddApiKeyHeader(HttpRequestMessage request)
+        private void addApiKeyHeader(HttpRequestMessage request)
         {
             if (!string.IsNullOrEmpty(_apiKey))
             {
@@ -34,39 +34,37 @@ namespace PetStoreApiSpecFlowTests.Client
         }
 
         // POST /store/order
-        public async Task<HttpResponseMessage> PostOrderAsync(object order)
+        public async Task<HttpResponseMessage> postOrderAsync(object order)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "/store/order");
-            AddApiKeyHeader(request);
+            addApiKeyHeader(request);
             var json = JsonConvert.SerializeObject(order);
             request.Content = new StringContent(json, Encoding.UTF8, "application/json");
             return await _httpClient.SendAsync(request);
         }
 
         // GET /store/order/{orderId}
-        public async Task<HttpResponseMessage> GetOrderByIdAsync(long orderId)
+        public async Task<HttpResponseMessage> getOrderByIdAsync(long orderId)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"/store/order/{orderId}");
-            AddApiKeyHeader(request);
+            addApiKeyHeader(request);
             return await _httpClient.SendAsync(request);
         }
 
         // DELETE /store/order/{orderId}
-        public async Task<HttpResponseMessage> DeleteOrderByIdAsync(long orderId)
+        public async Task<HttpResponseMessage> deleteOrderByIdAsync(long orderId)
         {
             var request = new HttpRequestMessage(HttpMethod.Delete, $"/store/order/{orderId}");
-            AddApiKeyHeader(request);
+            addApiKeyHeader(request);
             return await _httpClient.SendAsync(request);
         }
 
         // GET /store/inventory
-        public async Task<HttpResponseMessage> GetInventoryAsync()
+        public async Task<HttpResponseMessage> getInventoryAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "/store/inventory");
-            AddApiKeyHeader(request);
+            addApiKeyHeader(request);
             return await _httpClient.SendAsync(request);
         }
-
-        // Add more methods for other store endpoints as needed
     }
 }
