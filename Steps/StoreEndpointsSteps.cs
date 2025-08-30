@@ -23,25 +23,25 @@ namespace PetStoreApiSpecFlowTests.Steps
         [When("I POST the order to \"/store/order\"")]
         public async Task WhenIPostTheOrderToStoreOrder()
         {
-            _response = await _service.PlaceOrderAsync(_order);
+            _response = await _service.placeOrderAsync(_order);
         }
 
         [When("I GET \"/store/order/1\"")]
         public async Task WhenIGetStoreOrderById()
         {
-            _response = await _service.GetOrderByIdAsync(1);
+            _response = await _service.getOrderByIdAsync(1);
         }
 
         [When("I DELETE \"/store/order/1\"")]
         public async Task WhenIDeleteStoreOrderById()
         {
-            _response = await _service.DeleteOrderByIdAsync(1);
+            _response = await _service.deleteOrderByIdAsync(1);
         }
 
         [When("I GET \"/store/inventory\"")]
         public async Task WhenIGetStoreInventory()
         {
-            _response = await _service.GetInventoryAsync();
+            _response = await _service.getInventoryAsync();
         }
 
         [Then("the response status should be 200")]

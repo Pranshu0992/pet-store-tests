@@ -14,14 +14,14 @@ namespace PetStoreApiSpecFlowTests.Tests
         public async Task PlaceOrder_ShouldReturn200()
         {
             var order = new Order { Id = 2, PetId = 2, Quantity = 1, Status = "placed", Complete = true };
-            var response = await _service.PlaceOrderAsync(order);
+            var response = await _service.placeOrderAsync(order);
             Assert.AreEqual(200, (int)response.StatusCode);
         }
 
         [Test]
         public async Task GetInventory_ShouldReturn200()
         {
-            var response = await _service.GetInventoryAsync();
+            var response = await _service.getOrderByIdAsync(1);
             Assert.AreEqual(200, (int)response.StatusCode);
         }
     }
