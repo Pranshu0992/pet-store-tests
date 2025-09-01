@@ -22,15 +22,5 @@ namespace PetStoreApiSpecFlowTests.Helpers
             var actual = actualOrder.shipDate.ToUniversalTime().ToString("yyyy-MM-dd HH");
             Assert.AreEqual(expected, actual, "shipDate does not match (ignoring minutes)");
         }
-
-        public static async Task VerifyInventoryResponse(HttpResponseMessage response, Dictionary<string, int> expectedInventory)
-        {
-            var json = await response.Content.ReadAsStringAsync();
-            var actualInventory = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
-            foreach (var key in expectedInventory.Keys)
-            {
-                Assert.AreEqual(expectedInventory[key], actualInventory[key]);
-            }
-        }
     }
 }

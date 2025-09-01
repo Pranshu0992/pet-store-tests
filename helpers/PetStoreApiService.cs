@@ -10,9 +10,9 @@ namespace PetStoreApiSpecFlowTests.Helpers
     {
         private readonly StoreApiClient _client;
 
-        public PetStoreApiService()
+        public PetStoreApiService(StoreApiClient client)
         {
-            _client = new StoreApiClient();
+            _client = client;
         }
 
         public async Task<HttpResponseMessage> placeOrderAsync(Order order, bool authenticated = true)
