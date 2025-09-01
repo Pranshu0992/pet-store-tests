@@ -25,45 +25,45 @@ namespace PetStoreApiSpecFlowTests.Client
             _httpClient.BaseAddress = new System.Uri(baseUrl);
         }
 
-        private void addApiKeyHeader(HttpRequestMessage request)
+        private void addApiKeyHeader(HttpRequestMessage request, bool authenticated)
         {
-            if (!string.IsNullOrEmpty(_apiKey))
+            if (authenticated && !string.IsNullOrEmpty(_apiKey))
             {
                 request.Headers.Add("api_key", _apiKey);
             }
         }
 
         // POST /store/order
-        public async Task<HttpResponseMessage> postOrderAsync(object order)
+        public async Task<HttpResponseMessage> postOrderAsync(object order, bool authenticated = true)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "/v2/store/order");
-            addApiKeyHeader(request);
+            addApiKeyHeader(request, authenticated);
             var json = JsonConvert.SerializeObject(order);
             request.Content = new StringContent(json, Encoding.UTF8, "application/json");
             return await _httpClient.SendAsync(request);
         }
 
         // GET /store/order/{orderId}
-        public async Task<HttpResponseMessage> getOrderByIdAsync(long orderId)
+        public async Task<HttpResponseMessage> getOrderByIdAsync(long orderId, bool authenticated = true)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"/v2/store/order/{orderId}");
-            addApiKeyHeader(request);
+            addApiKeyHeader(request, authenticated);
             return await _httpClient.SendAsync(request);
         }
 
         // DELETE /store/order/{orderId}
-        public async Task<HttpResponseMessage> deleteOrderByIdAsync(long orderId)
+        public async Task<HttpResponseMessage> deleteOrderByIdAsync(long orderId, bool authenticated = true)
         {
             var request = new HttpRequestMessage(HttpMethod.Delete, $"/v2/store/order/{orderId}");
-            addApiKeyHeader(request);
+            addApiKeyHeader(request, authenticated);
             return await _httpClient.SendAsync(request);
         }
 
         // GET /store/inventory
-        public async Task<HttpResponseMessage> getInventoryAsync()
+        public async Task<HttpResponseMessage> getInventoryAsync(bool authenticated = true)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "/v2/store/inventory");
-            addApiKeyHeader(request);
+            addApiKeyHeader(request, authenticated);
             return await _httpClient.SendAsync(request);
         }
     }

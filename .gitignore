@@ -1,10 +1,6 @@
 # .NET build and system files
 bin/
 obj/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
 *.vs/
 
 # VS Code settings
@@ -24,9 +20,6 @@ TestResults/
 
 # Generated SpecFlow files
 *.feature.cs
-
-# Other system files
-Thumbs.db
 
 # Environment files
 .env

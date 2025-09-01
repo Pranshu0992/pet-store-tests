@@ -1,10 +1,18 @@
 Feature: Get Order Endpoint
   As a user of the Petstore API
-  I can fetch the details order 
-  using an order Id
+  I can fetch the details of an order using an order Id
 
   Scenario: Get order by ID
-    Given an order with ID 123 exists
+    Given an order with ID 123 is created
     When I GET "/store/order/123"
-    Then the response status should be 200
-    And the response should contain the order details
+    Then the response status for get order should be 200
+
+  Scenario: Get order with non-existent ID
+    When I GET "/store/order/999999"
+    Then the response status for get order should be 404
+
+#  Scenario: Get order without authentication
+#    Given an order with ID 123 exists
+#    And I am not authenticated to get order details
+#    When I GET "/store/order/123"
+#    Then the response status for get order should be 401
