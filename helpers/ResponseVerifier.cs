@@ -13,11 +13,14 @@ namespace PetStoreApiSpecFlowTests.Helpers
         {
             var json = await response.Content.ReadAsStringAsync();
             var actualOrder = JsonConvert.DeserializeObject<Order>(json);
-            Assert.AreEqual(expectedOrder.id, actualOrder.id);
-            Assert.AreEqual(expectedOrder.petId, actualOrder.petId);
-            Assert.AreEqual(expectedOrder.quantity, actualOrder.quantity);
-            Assert.AreEqual(expectedOrder.status, actualOrder.status);
-            Assert.AreEqual(expectedOrder.complete, actualOrder.complete);
+            Assert.AreEqual(expectedOrder.id, actualOrder.id, "order id does not match");
+            Assert.AreEqual(expectedOrder.petId, actualOrder.petId, "petId does not match");
+            Assert.AreEqual(expectedOrder.quantity, actualOrder.quantity, "quantity does not match");
+            Assert.AreEqual(expectedOrder.status, actualOrder.status, "status does not match");
+            Assert.AreEqual(expectedOrder.complete, actualOrder.complete, "complete status does not match");
+            var expected = expectedOrder.shipDate.ToUniversalTime().ToString("yyyy-MM-dd HH");
+            var actual = actualOrder.shipDate.ToUniversalTime().ToString("yyyy-MM-dd HH");
+            Assert.AreEqual(expected, actual, "shipDate does not match (ignoring minutes)");
         }
 
         public static async Task VerifyInventoryResponse(HttpResponseMessage response, Dictionary<string, int> expectedInventory)

@@ -46,5 +46,11 @@ namespace PetStoreApiSpecFlowTests.Steps
         {
             Assert.AreEqual(statusCode, (int)_response.StatusCode);
         }
+
+        [Then("the order details returned should be correct based on the request")]
+        public async Task ThenTheOrderDetailsReturnedShouldBeCorrectBasedOnTheRequest()
+        {
+            await ResponseVerifier.VerifyOrderResponse(_response, _order);
+        }
     }
 }
