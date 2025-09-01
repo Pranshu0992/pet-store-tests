@@ -3,8 +3,8 @@ Feature: Delete Order Endpoint
   I want to make sure I can delete order using an order Id
 
   Scenario: Delete order by ID
-    Given an order with ID 321 exists
-    When I DELETE "/store/order/321"
+    Given an order with ID 4 exists
+    When I DELETE "/store/order/4"
     Then the response status for delete order should be 200
 
   Scenario: Delete order with non-existent ID

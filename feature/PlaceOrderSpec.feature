@@ -7,6 +7,7 @@ Feature: Place Order Endpoints
     Given I have a valid order payload
     When I POST the order to "/store/order"
     Then the response status for place order should be 200
+    And the order details returned should be correct based on the request
 
   Scenario: Place order with invalid payload
     Given I have an invalid order payload
