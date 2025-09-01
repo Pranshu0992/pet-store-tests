@@ -13,11 +13,11 @@ namespace PetStoreApiSpecFlowTests.Helpers
         {
             var json = await response.Content.ReadAsStringAsync();
             var actualOrder = JsonConvert.DeserializeObject<Order>(json);
-            Assert.AreEqual(expectedOrder.Id, actualOrder.Id);
-            Assert.AreEqual(expectedOrder.PetId, actualOrder.PetId);
-            Assert.AreEqual(expectedOrder.Quantity, actualOrder.Quantity);
-            Assert.AreEqual(expectedOrder.Status, actualOrder.Status);
-            Assert.AreEqual(expectedOrder.Complete, actualOrder.Complete);
+            Assert.AreEqual(expectedOrder.id, actualOrder.id);
+            Assert.AreEqual(expectedOrder.petId, actualOrder.petId);
+            Assert.AreEqual(expectedOrder.quantity, actualOrder.quantity);
+            Assert.AreEqual(expectedOrder.status, actualOrder.status);
+            Assert.AreEqual(expectedOrder.complete, actualOrder.complete);
         }
 
         public static async Task VerifyInventoryResponse(HttpResponseMessage response, Dictionary<string, int> expectedInventory)

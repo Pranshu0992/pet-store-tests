@@ -34,3 +34,6 @@ Thumbs.db
 # Ignore appsettings secrets (if any)
 appsettings.*.json
 !appsettings.json
+
+#Test reports 
+*.html

@@ -2,10 +2,10 @@ namespace PetStoreApiSpecFlowTests.Model
 {
     public class Order
     {
-        public long Id { get; set; }
-        public long PetId { get; set; }
-        public int Quantity { get; set; }
-        public string Status { get; set; }
-        public bool Complete { get; set; }
+        public long id { get; set; }
+        public long petId { get; set; }
+        public int quantity { get; set; }
+        public string status { get; set; }
+        public bool complete { get; set; }
     }
 }
