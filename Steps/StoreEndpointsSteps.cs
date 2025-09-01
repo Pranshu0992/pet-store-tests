@@ -17,7 +17,7 @@ namespace PetStoreApiSpecFlowTests.Steps
         [Given("I have a valid order payload")]
         public void GivenIHaveAValidOrderPayload()
         {
-            _order = new Order { Id = 1, PetId = 1, Quantity = 1, Status = "placed", Complete = true };
+            _order = PetStoreApiSpecFlowTests.MockData.MockDataFactory.createMockOrder();
         }
 
         [When("I POST the order to \"/store/order\"")]
@@ -26,16 +26,32 @@ namespace PetStoreApiSpecFlowTests.Steps
             _response = await _service.placeOrderAsync(_order);
         }
 
-        [When("I GET \"/store/order/1\"")]
-        public async Task WhenIGetStoreOrderById()
+
+        [Given("an order with ID (.*) exists")]
+        public async Task GivenAnOrderWithIdExists(long orderId)
         {
-            _response = await _service.getOrderByIdAsync(1);
+            _order = PetStoreApiSpecFlowTests.MockData.MockDataFactory.createMockOrder(id: orderId);
+            var response = await _service.placeOrderAsync(_order);
+            Assert.AreEqual(200, (int)response.StatusCode);
         }
 
-        [When("I DELETE \"/store/order/1\"")]
-        public async Task WhenIDeleteStoreOrderById()
+
+        [When("I GET \"/store/order/(.*)\"")]
+        public async Task WhenIGetStoreOrderById(long orderId)
         {
-            _response = await _service.deleteOrderByIdAsync(1);
+            _response = await _service.getOrderByIdAsync(orderId);
+        }
+
+        [Then("the response should contain the order details")]
+        public async Task ThenTheResponseShouldContainOrderDetails()
+        {
+
+        }
+
+        [When("I DELETE \"/store/order/(.*)\"")]
+        public async Task WhenIDeleteStoreOrderById(long orderId)
+        {
+            _response = await _service.deleteOrderByIdAsync(orderId);
         }
 
         [When("I GET \"/store/inventory\"")]
@@ -44,10 +60,22 @@ namespace PetStoreApiSpecFlowTests.Steps
             _response = await _service.getInventoryAsync();
         }
 
+        [Then("the response should contain inventory details")]
+        public async Task ThenTheResponseShouldContainInventoryDetails()
+        {
+            
+        }
+
         [Then("the response status should be 200")]
         public void ThenTheResponseStatusShouldBe200()
         {
             Assert.AreEqual(200, (int)_response.StatusCode);
+        }
+
+        [Then("the response status should be 404")]
+        public void ThenTheResponseStatusShouldBe404()
+        {
+            Assert.AreEqual(404, (int)_response.StatusCode);
         }
     }
 }

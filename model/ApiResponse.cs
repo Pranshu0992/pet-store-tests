@@ -2,8 +2,8 @@ namespace PetStoreApiSpecFlowTests.Model
 {
     public class ApiResponse
     {
-        public int Code { get; set; }
-        public string Type { get; set; }
-        public string Message { get; set; }
+        public int code { get; set; }
+        public string type { get; set; }
+        public string message { get; set; }
     }
 }
